@@ -23,6 +23,6 @@ resource "aws_instance" "tf_project_host" {
 }
 
 resource "aws_eip_association" "tf_project_eip_assoc" {
-  instance_id   = aws_instance.tf_project_host[0].id
-  allocation_id = module.tf_project_vpc.nat_ids[0]
+  instance_id = module.tf_project_vpc.nat_ids[0]
+  public_ip   = module.tf_project_vpc.nat_public_ips[0]
 }
