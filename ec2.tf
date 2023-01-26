@@ -11,7 +11,7 @@ resource "aws_instance" "tf_project_host" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update && sudo apt install apache2"
+      "sudo apt update && sudo apt install -y apache2"
     ]
   }
 
