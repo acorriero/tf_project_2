@@ -11,7 +11,8 @@ resource "aws_instance" "tf_project_host" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update && sudo apt install -y apache2"
+      "sudo apt update",
+      "sudo apt install -y apache2"
     ]
   }
 
@@ -22,7 +23,7 @@ resource "aws_instance" "tf_project_host" {
   }
 }
 
-resource "aws_eip_association" "tf_project_eip_assoc" {
-  instance_id = module.tf_project_vpc.nat_ids[0]
-  public_ip   = module.tf_project_vpc.nat_public_ips[0]
-}
+# resource "aws_eip_association" "tf_project_eip_assoc" {
+#   instance_id = aws_instance.tf_project_host[0].id
+#   allocation_id = module.tf_project_vpc.nat_ids[0]
+# }
